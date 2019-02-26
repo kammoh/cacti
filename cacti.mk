@@ -1,5 +1,5 @@
 TARGET = cacti
-SHELL = /bin/sh
+SHELL = /bin/bash
 .PHONY: all depend clean
 .SUFFIXES: .cc .o
 
@@ -16,7 +16,7 @@ ifeq ($(TAG),dbg)
   OPT = -ggdb -g -O0 -DNTHREADS=1  -gstabs+
 else
   DBG = 
-  OPT = -g  -msse2 -mfpmath=sse -DNTHREADS=$(NTHREADS)
+  OPT = -g0 -O3 -fomit-frame-pointer -march=native -mtune=native  -DNTHREADS=$(NTHREADS)
 endif
 
 #CXXFLAGS = -Wall -Wno-unknown-pragmas -Winline $(DBG) $(OPT) 
